@@ -1,7 +1,7 @@
 import collections
 
 def letter_freq(txt):
-    """Creates a dictionary from a string, by lowering all characters, then going through each character one by one.
+    """Creates a dictionary from a string by lowering all characters, then going through each character one by one.
         Checks if its new to start counting that character,
         Returns
         -------
@@ -9,7 +9,7 @@ def letter_freq(txt):
         Link - https://stackoverflow.com/questions/9001509/how-can-i-sort-a-dictionary-by-key
     """
     dict_for_letters = {}
-    txt.lower()
+    txt = txt.lower()
     for each_character in txt:
         if each_character in dict_for_letters:
             dict_for_letters[each_character] += 1

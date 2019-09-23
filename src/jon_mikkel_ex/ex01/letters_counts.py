@@ -1,5 +1,6 @@
 import collections
 
+
 def letter_freq(txt):
     """Creates a dictionary from a string by lowering all characters, then going through each character one by one.
         Checks if its new to start counting that character,

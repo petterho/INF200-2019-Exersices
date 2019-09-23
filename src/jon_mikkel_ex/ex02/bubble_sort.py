@@ -1,8 +1,8 @@
-def bubble_sort(data):
-    sorted_list = list(data)
+def bubble_sort(list_for_sorting):
+    sorted_list = list(list_for_sorting)
     number_of_rounds = len(data) - 1
     for rounds in range(number_of_rounds):
-        for remaining in range(number_of_rounds-rounds):
+        for remaining in range(number_of_rounds - rounds):
             if sorted_list[remaining] > sorted_list[remaining+1]:
                 sorted_list[remaining], sorted_list[remaining + 1] = sorted_list[remaining + 1], sorted_list[remaining]
 

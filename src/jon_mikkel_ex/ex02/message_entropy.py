@@ -2,6 +2,7 @@ from src.jon_mikkel_ex.ex01.letters_counts import letter_freq
 
 
 def entropy(message):
+    letter_freq(message)
     pass
 
 

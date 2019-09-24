@@ -1,4 +1,4 @@
-import collections
+from collections import OrderedDict
 
 
 def letter_freq(txt):
@@ -17,7 +17,7 @@ def letter_freq(txt):
         else:
             dict_for_letters[each_character] = 1
 
-    return collections.OrderedDict(sorted(dict_for_letters.items()))
+    return OrderedDict(sorted(dict_for_letters.items()))
 
 
 if __name__ == '__main__':

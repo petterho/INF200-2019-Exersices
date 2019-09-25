@@ -1,13 +1,13 @@
-def char_counts(textfilename):
-    """Opens a file for reading and makes a list of each character with a code lower than 256, and records the
-        frequencies
+def char_counts(text_filename):
+    """ Opens a file for reading and makes a list of each character with a code lower than 256, and records the
+        occurrences
         Returns
         --------
-        A list of each charactercode and its frequency
+        A list of each characters code and its occurrences
     """
 
     list_of_char_code_with_freq = [0 for _ in range(256)]
-    with open(textfilename, 'r', encoding='utf-8') as txt:
+    with open(text_filename, 'r', encoding='utf-8') as txt:
         for line in txt:
             for char in line:
                 if ord(char) < 256:

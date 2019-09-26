@@ -3,6 +3,7 @@
 __author__ = "Jon-Mikkel Korsvik"
 __email__ = "jonkors@nmbu.no"
 
+
 def bubble_sort(list_for_sorting):
     """ Inputs a list for sorting, and transforms it into a new "sorted_list".
         The amount of rounds is either way 1 less than the length of the list

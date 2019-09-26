@@ -3,6 +3,7 @@
 __author__ = "Jon-Mikkel Korsvik"
 __email__ = "jonkors@nmbu.no"
 
+
 def char_counts(text_filename):
     """ Opens a file for reading and makes a list of each character with a code lower than 256, and records the
         occurrences

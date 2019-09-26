@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+
+__author__ = "Jon-Mikkel Korsvik"
+__email__ = "jonkors@nmbu.no"
+
 from src.jon_mikkel_ex.ex01.letters_counts import letter_freq
 from math import log2
 

@@ -1,5 +1,15 @@
-from src.YOUR_NAME_ex.ex01.letter_counts import letter_freq
+# -*- coding: utf-8 -*-
+
+__author__ = 'Petter Bøe Hørtvedt'
+__email__ = 'petterho@nmbu.no'
+
 from math import log2
+from collections import Counter
+
+
+def letter_freq(txt):
+    # Best solution
+    return Counter(txt.lower())
 
 
 def entropy(message):

@@ -1,5 +1,5 @@
 def letter_freq(txt):
-    txt.lower()
+    txt = txt.lower()
     freq_dict = dict()
     for sign in txt:
         if sign in freq_dict.keys():

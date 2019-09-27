@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+__author__ = 'Petter Bøe Hørtvedt'
+__email__ = 'petterho@nmbu.no'
+
+
 def bubble_sort(unsorted_data):
     """Bubble sorts data given as input to rising order.
     Does it iterative

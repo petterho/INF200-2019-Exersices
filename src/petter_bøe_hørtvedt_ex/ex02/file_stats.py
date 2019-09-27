@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+__author__ = 'Petter Bøe Hørtvedt'
+__email__ = 'petterho@nmbu.no'
+
+
 def char_counts(textfilename):
     """Opens a text-file and counts the number of occurrences each
     character in the 8 bit UTF-8 system

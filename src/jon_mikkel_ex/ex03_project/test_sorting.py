@@ -61,14 +61,12 @@ def test_sort_all_equal():
     assert bubble_sort([1, 5, 3, 2, 3, 4, 1]) == [1, 1, 2, 3, 3, 4, 5]
 
 
-def test_sorting():
-    """
-    Test sorting for various test cases.
+""" The code underneath was a part of test_sorting, but I decided that
+    it would be easier to identify a failed test if they were separated.
+"""
 
-    This test case should test sorting of a range of data sets and
-    ensure that they are sorted correctly. These could be lists of
-    numbers of different length or lists of strings.
-    """
+
+def test_integer():
     data = []
     for i in range(1000):  # Testing integers
         data.append(random.randint(1, 1000))
@@ -78,15 +76,23 @@ def test_sorting():
     for index in range(len(new_data)-1):
         assert new_data[index] <= new_data[index+1]
 
+
+def test_floats():
     data = np.random.random(100)  # Testing floats
     new_data = bubble_sort(data)
 
     for index in range(len(new_data)-1):
         assert new_data[index] <= new_data[index+1]
 
-    list_of_strings = ('aaa', 'bb', 'ii', 'qwr')
-    bubble_sort(list_of_strings)
 
+def test_single_string():
+    string_for_test = 'afdebc'
+    assert bubble_sort(string_for_test) == ['a', 'b', 'c', 'd', 'e', 'f']
+
+
+def test_list_of_strings():
+    list_of_strings = ('aaa', 'ii', 'bb', 'qwr')
+    assert bubble_sort(list_of_strings) == ['aaa', 'bb', 'ii', 'qwr']
 
 
 if __name__ == "__main__":
@@ -97,4 +103,7 @@ if __name__ == "__main__":
     test_sort_reversed()
     test_sort_sorted()
     test_sorted_is_not_original()
-    test_sorting()
+    test_single_string()
+    test_floats()
+    test_integer()
+    test_list_of_strings()

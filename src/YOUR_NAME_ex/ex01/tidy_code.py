@@ -1,4 +1,4 @@
-from random import randint as random_integer
+from random import randint
 
 __author__ = ''
 __email__ = '@nmbu.no'
@@ -12,7 +12,7 @@ def guess_input():
 
 
 def throw_dice():
-    return random_integer(1, 6) + random_integer(1, 6)
+    return randint(1, 6) + randint(1, 6)
 
 
 def check_answer(answer, guess):

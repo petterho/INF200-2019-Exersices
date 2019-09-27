@@ -12,7 +12,7 @@ def median(data):
     :return: Median of data
     """
 
-    sdata = sorted(data)
-    n = len(sdata)
-    return (sdata[n//2] if n % 2 == 1
-        else 0.5 * (sdata[n//2 - 1] + sdata[n//2]))
+    sorted_data = sorted(data)
+    n = len(sorted_data)
+    return (sorted_data[n // 2] if n % 2 == 1
+            else 0.5 * (sorted_data[n // 2 - 1] + sorted_data[n // 2]))

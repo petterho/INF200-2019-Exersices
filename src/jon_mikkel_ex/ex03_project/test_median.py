@@ -26,7 +26,12 @@ def test_list_odd_number_of_elements():
     assert median([1, 2, 3, 4, 5]) == 3
 
 
+def test_list_even_number_of_elements():
+    assert median([1, 2, 3, 4]) == 2.5
+
+
 if __name__ == "__main__":
     test_single_element_list()
     test_list_odd_number_of_elements()
+    test_list_even_number_of_elements()
 

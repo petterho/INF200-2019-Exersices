@@ -16,3 +16,12 @@ def median(data):
     n = len(sorted_data)
     return (sorted_data[n // 2] if n % 2 == 1
             else 0.5 * (sorted_data[n // 2 - 1] + sorted_data[n // 2]))
+
+
+def test_single_element_list():
+    assert median([4]) == 4
+
+
+if __name__ == "__main__":
+    test_single_element_list()
+

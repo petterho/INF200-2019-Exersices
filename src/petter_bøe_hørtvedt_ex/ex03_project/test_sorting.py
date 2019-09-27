@@ -85,27 +85,28 @@ def test_sort_all_equal():
     assert bubble_sort([4, 4, 1, 1]) == [1, 1, 4, 4]
 
 
-def test_sorting():
-    """
-    Test sorting for various test cases.
-
-    This test case should test sorting of a range of data sets and
-    ensure that they are sorted correctly. These could be lists of
-    numbers of different length or lists of strings.
-    """
+def test_sort_random_floats():
+    """Tests that sorting works on random floats between 0 and 1"""
     data = np.random.random(100)
     sorted_data = bubble_sort(data)
     for first, second in zip(sorted_data, sorted_data[1::]):
         assert first <= second
 
+
+def test_sort_string():
+    """Tests that sorting works on a string"""
     data_string = 'bcabac'
     sorted_data_string = ['a', 'a', 'b', 'b', 'c', 'c']
     print(bubble_sort(data_string))
     assert bubble_sort(data_string) == sorted_data_string
 
-def test_sort_list_of_strings():
 
+def test_sort_list_of_strings():
+    """Tests that sorting works on a list of strings"""
+    data = ['aa', 'ba', 'ab', 'bb', 'abba', 'aabb', 'baa']
+    sorted_data = ['aa', 'aabb', 'ab', 'abba', 'ba', 'baa', 'bb']
+    assert bubble_sort(data) == sorted_data
 
 
 if __name__ == '__main__':
-    test_sorting()
+    test_sort_list_of_strings()

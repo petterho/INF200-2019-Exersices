@@ -5,8 +5,8 @@ __email__ = "jonkors@nmbu.no"
 
 
 def char_counts(text_filename):
-    """ Opens a file for reading and makes a list of each character with a code lower than 256, and records the
-        occurrences
+    """ Opens a file for reading and makes a list of each character with a
+        code lower than 256, and records the occurrences
         Returns
         --------
         A list of each characters code and its occurrences

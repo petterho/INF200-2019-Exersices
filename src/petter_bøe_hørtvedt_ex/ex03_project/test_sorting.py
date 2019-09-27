@@ -4,6 +4,9 @@ __author__ = 'Petter Bøe Hørtvedt'
 __email__ = 'petterho@nmbu.no'
 
 
+import numpy as np
+
+
 def bubble_sort(unsorted_data):
     """Bubble sorts data given as input to rising order.
     Does it iterative
@@ -90,3 +93,19 @@ def test_sorting():
     ensure that they are sorted correctly. These could be lists of
     numbers of different length or lists of strings.
     """
+    data = np.random.random(100)
+    sorted_data = bubble_sort(data)
+    for first, second in zip(sorted_data, sorted_data[1::]):
+        assert first <= second
+
+    data_string = 'bcabac'
+    sorted_data_string = ['a', 'a', 'b', 'b', 'c', 'c']
+    print(bubble_sort(data_string))
+    assert bubble_sort(data_string) == sorted_data_string
+
+def test_sort_list_of_strings():
+
+
+
+if __name__ == '__main__':
+    test_sorting()

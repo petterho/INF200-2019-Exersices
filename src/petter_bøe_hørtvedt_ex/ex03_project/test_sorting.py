@@ -22,7 +22,8 @@ def bubble_sort(unsorted_data):
     for length_compare in reversed(range(length_list)):
         for compare in range(length_compare):
             if sorted_data[compare] > sorted_data[compare + 1]:
-                sorted_data[compare], sorted_data[compare + 1] = sorted_data[compare + 1], sorted_data[compare]
+                sorted_data[compare], sorted_data[compare + 1] = \
+                    sorted_data[compare + 1], sorted_data[compare]
     return sorted_data
 
 
@@ -106,7 +107,3 @@ def test_sort_list_of_strings():
     data = ['aa', 'ba', 'ab', 'bb', 'abba', 'aabb', 'baa']
     sorted_data = ['aa', 'aabb', 'ab', 'abba', 'ba', 'baa', 'bb']
     assert bubble_sort(data) == sorted_data
-
-
-if __name__ == '__main__':
-    test_sort_list_of_strings()

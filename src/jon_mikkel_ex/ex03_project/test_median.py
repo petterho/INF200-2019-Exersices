@@ -24,27 +24,30 @@ def median(data):  # Collected from :
 
 
 def test_median_single_element_list():
-    assert median([4]) == 4
+    assert median([4]) == 4, 'Does not work with a single element list'
 
 
 def test_list_odd_number_of_elements():
-    assert median([1, 2, 3, 4, 5]) == 3
+    assert median([1, 2, 3, 4, 5]) == 3, 'Does not work with odd number of \
+                                          elements'
 
 
 def test_median_list_even_number_of_elements():
-    assert median([1, 2, 3, 4]) == 2.5
+    assert median([1, 2, 3, 4]) == 2.5, 'Does not work with even number of \
+                                            elements'
 
 
 def test_median_ordered_list():
-    assert median([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == 5.5
+    assert median([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == 5.5, 'Does not work with\
+                                                           ordered list'
 
 
 def test_median_unordered_list():
-    assert median([4, 2, 3, 1]) == 2.5
+    assert median([4, 2, 3, 1]) == 2.5, 'Does not work with unordered list'
 
 
 def test_median_reversed_ordered_list():
-    assert median([3, 2, 1]) == 2
+    assert median([3, 2, 1]) == 2, 'Does not work with reversed list'
 
 
 def test_median_raises_value_error_on_empty_list():
@@ -55,8 +58,8 @@ def test_median_raises_value_error_on_empty_list():
 def test_median_if_original_data_unchanged():
     data = [1, 2, 3]
     median(data)
-    assert data == [1, 2, 3]
+    assert data == [1, 2, 3], 'Original data is changed'
 
 
 def test_median_tuple():
-    assert median((1, 2, 3)) == 2
+    assert median((1, 2, 3)) == 2, 'Does not work with tuples'

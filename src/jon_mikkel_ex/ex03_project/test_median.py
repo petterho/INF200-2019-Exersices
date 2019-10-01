@@ -52,3 +52,7 @@ def test_median_raises_value_error_on_empty_list():
         median([])
 
 
+def test_if_original_data_unchanged():
+    data = [1, 2, 3]
+    median(data)
+    assert data == [1, 2, 3]

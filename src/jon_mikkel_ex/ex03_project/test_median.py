@@ -17,6 +17,8 @@ def median(data):  # Collected from :
 
     sorted_data = sorted(data)
     n = len(sorted_data)
+    if n < 1:  # Raising a ValueError when the list is empty
+        raise ValueError
     return (sorted_data[n // 2] if n % 2 == 1
             else 0.5 * (sorted_data[n // 2 - 1] + sorted_data[n // 2]))
 
@@ -43,5 +45,10 @@ def test_unordered_list():
 
 def test_reversed_ordered_list():
     assert median([3, 2, 1]) == 2
+
+
+def test_median_raises_value_error_on_empty_list():
+    with pytest.raises(ValueError):
+        median([])
 
 

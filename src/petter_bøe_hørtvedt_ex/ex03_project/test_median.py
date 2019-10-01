@@ -17,8 +17,7 @@ def median(data):
     sorted_data = sorted(data)
     number_of_elements = len(sorted_data)
     if number_of_elements == 0:
-        pass
-        #raise ValueError
+        raise ValueError
     else:
         if number_of_elements % 2 == 1:
             return sorted_data[number_of_elements // 2]
@@ -84,4 +83,4 @@ def test_median_tuples():
 
 def test_median_raises_value_error_on_empty_list():
     with pytest.raises(ValueError):
-        median([]), 
+        median([])

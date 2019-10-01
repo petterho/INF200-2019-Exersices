@@ -30,7 +30,8 @@ def test_median_odd_element_list():
 
 def test_median_even_element_list():
     """Test that the median function works for lists of even lengths"""
-    assert median([4, 1, 3, 2]) == 2.5, 'Does not work for lists of odd lengths'
+    assert median([4, 1, 3, 2]) == 2.5, 'Does not work for lists ' \
+                                        'of odd lengths'
 
 
 def test_median_ordered_list():
@@ -49,7 +50,8 @@ def test_median_unordered_list():
 
 
 def test_median_empty_list():
-    """Test that the median function raise ValueError if it is given an empty list"""
+    """Test that the median function raise ValueError if it is given an empty
+     list"""
     assert median([]) == ValueError
 
 
@@ -65,7 +67,9 @@ def test_median_tuples():
     assert median((3, 1, 2)) == 2
 
 
-def test_median_something_something():
-    pass
+def test_median_raises_value_error_on_empty_list():
+    with pytest.raises(ValueError):
+        median([])
+
 
 

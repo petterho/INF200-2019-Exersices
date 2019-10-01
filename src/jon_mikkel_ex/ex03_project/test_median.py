@@ -23,7 +23,7 @@ def median(data):  # Collected from :
             else 0.5 * (sorted_data[n // 2 - 1] + sorted_data[n // 2]))
 
 
-def test_single_element_list():
+def test_median_single_element_list():
     assert median([4]) == 4
 
 
@@ -31,19 +31,19 @@ def test_list_odd_number_of_elements():
     assert median([1, 2, 3, 4, 5]) == 3
 
 
-def test_list_even_number_of_elements():
+def test_median_list_even_number_of_elements():
     assert median([1, 2, 3, 4]) == 2.5
 
 
-def test_ordered_list():
+def test_median_ordered_list():
     assert median([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == 5.5
 
 
-def test_unordered_list():
+def test_median_unordered_list():
     assert median([4, 2, 3, 1]) == 2.5
 
 
-def test_reversed_ordered_list():
+def test_median_reversed_ordered_list():
     assert median([3, 2, 1]) == 2
 
 
@@ -52,14 +52,11 @@ def test_median_raises_value_error_on_empty_list():
         median([])
 
 
-def test_if_original_data_unchanged():
+def test_median_if_original_data_unchanged():
     data = [1, 2, 3]
     median(data)
     assert data == [1, 2, 3]
 
 
-def test_tuple():
+def test_median_tuple():
     assert median((1, 2, 3)) == 2
-
-
-def test

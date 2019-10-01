@@ -4,7 +4,8 @@ __author__ = "Jon-Mikkel Korsvik"
 __email__ = "jonkors@nmbu.no"
 
 
-def median(data):
+def median(data):  # Collected from :
+    # https://github.com/yngvem/INF200-2019-Exercises.git
     """
     Returns median of data.
 
@@ -34,9 +35,7 @@ def test_ordered_list():
     assert median([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == 5.5
 
 
-
 if __name__ == "__main__":
     test_single_element_list()
     test_list_odd_number_of_elements()
     test_list_even_number_of_elements()
-

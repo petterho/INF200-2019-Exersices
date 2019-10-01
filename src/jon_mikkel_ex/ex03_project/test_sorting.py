@@ -3,7 +3,7 @@
 __author__ = "Jon-Mikkel Korsvik"
 __email__ = "jonkors@nmbu.no"
 
-from src.jon_mikkel_ex.ex02.bubble_sort import bubble_sort
+from src.jon_mikkel_ex import bubble_sort
 import random
 import numpy as np
 

@@ -3,6 +3,8 @@
 __author__ = 'Petter Bøe Hørtvedt'
 __email__ = 'petterho@nmbu.no'
 
+import pytest
+
 
 def median(data):
     """
@@ -12,10 +14,18 @@ def median(data):
     :return: Median of data
     """
 
-    sdata = sorted(data)
-    n = len(sdata)
-    return (sdata[n//2] if n % 2 == 1
-        else 0.5 * (sdata[n//2 - 1] + sdata[n//2]))
+    sorted_data = sorted(data)
+    number_of_elements = len(sorted_data)
+    if number_of_elements == 0:
+        raise ValueError
+    else:
+        if number_of_elements % 2 == 1:
+            return sorted_data[number_of_elements // 2]
+        else:
+            return (
+                    0.5 * (sorted_data[number_of_elements // 2 - 1]
+                           + sorted_data[number_of_elements // 2])
+            )
 
 
 def test_median_single_element_list():
@@ -25,13 +35,13 @@ def test_median_single_element_list():
 
 def test_median_odd_element_list():
     """Test that the median function works for lists of odd lengths"""
-    assert median([3, 1, 2]) == 1, 'Does not work for lists of odd lengths'
+    assert median([3, 1, 2]) == 2, 'Does not work for lists of odd lengths'
 
 
 def test_median_even_element_list():
     """Test that the median function works for lists of even lengths"""
     assert median([4, 1, 3, 2]) == 2.5, 'Does not work for lists ' \
-                                        'of odd lengths'
+                                        'of even lengths'
 
 
 def test_median_ordered_list():
@@ -52,7 +62,11 @@ def test_median_unordered_list():
 def test_median_empty_list():
     """Test that the median function raise ValueError if it is given an empty
      list"""
-    assert median([]) == ValueError
+    try:
+        median([])
+        assert False
+    except ValueError:
+        assert True
 
 
 def test_median_original_data_unchanged():
@@ -70,6 +84,3 @@ def test_median_tuples():
 def test_median_raises_value_error_on_empty_list():
     with pytest.raises(ValueError):
         median([])
-
-
-

@@ -56,3 +56,10 @@ def test_if_original_data_unchanged():
     data = [1, 2, 3]
     median(data)
     assert data == [1, 2, 3]
+
+
+def test_tuple():
+    assert median((1, 2, 3)) == 2
+
+
+def test

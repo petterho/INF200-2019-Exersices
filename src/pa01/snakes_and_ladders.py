@@ -35,9 +35,7 @@ def single_game(num_players):
         Number of moves the winning player needed to reach the goal
     """
     num_moves = 0
-    list_of_positions = []
-    for _ in range(num_players):
-        list_of_positions.append(0)
+    list_of_positions = [0]*num_players  # Creates a list with appropriate 0's
 
     while all([element < 90 for element in list_of_positions]):
         for player in range(num_players):

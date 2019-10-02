@@ -6,7 +6,7 @@ __version__ = "0.0.1"
 
 
 from random import randint
-
+from random import seed as random_seed
 
 def check_if_snake_or_ladder(position):
     """
@@ -68,7 +68,7 @@ def multiple_games(num_games, num_players):
     Returns
     -------
     num_moves : list
-        List with the numbedr of moves needed in each game.
+        List with the number of moves needed in each game.
     """
     num_moves = []
     for game in range(num_games):
@@ -92,9 +92,12 @@ def multi_game_experiment(num_games, num_players, seed):
     Returns
     -------
     num_moves : list
-        List with the numbedr of moves needed in each game.
+        List with the number of moves needed in each game.
     """
+    random_seed(seed)
+    return multiple_games(num_games, num_players)
+
 
 
 if __name__ == "__main__":
-    print(single_game(2))
+    print(multi_game_experiment(100, 2, 0))

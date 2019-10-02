@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-__author__ = "Jon-Mikkel Korsvik", "Petter Boe Hørtvedt"
+__author__ = "Jon-Mikkel Korsvik", "Petter Bøe Hørtvedt"
 __email__ = "jonkors@nmbu.no", "petterho@nmbu.no"
 __version__ = "0.0.1"
 
 
 from random import randint
 from random import seed as random_seed
+import numpy as np
+
 
 def check_if_snake_or_ladder(position):
     """
@@ -98,6 +100,11 @@ def multi_game_experiment(num_games, num_players, seed):
     return multiple_games(num_games, num_players)
 
 
-
 if __name__ == "__main__":
-    print(multi_game_experiment(100, 2, 0))
+    array = multi_game_experiment(100, 4, 0)
+    print(f'Here are some of the stats for the snakes and ladder experiment:\n'
+          f'The shortest game: {np.min(array)} moves\n'
+          f'The longest game: {np.max(array)} moves\n'
+          f'The median game duration: {np.median(array)} moves\n'
+          f'The mean game duration: {np.mean(array)} moves\n'
+          f'The standard deviation: {np.std(array)} moves')

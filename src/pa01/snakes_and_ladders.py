@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+
+__author__ = "Jon-Mikkel Korsvik", "Petter Boe Hørtvedt"
+__email__ = "jonkors@nmbu.no", "petterho@nmbu.no"
+__version__ = "0.0.1"
+
+
 from random import randint
 
 
@@ -63,6 +70,11 @@ def multiple_games(num_games, num_players):
     num_moves : list
         List with the numbedr of moves needed in each game.
     """
+    num_moves = []
+    for game in range(num_games):
+        num_moves.append(single_game(num_players))
+    return num_moves
+
 
 def multi_game_experiment(num_games, num_players, seed):
     """

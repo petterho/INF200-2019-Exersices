@@ -69,6 +69,12 @@ def test_median_empty_list():
         assert True
 
 
+def test_median_raises_value_error_on_empty_list():
+    """Test that the median function raise ValueError if it is given an empty
+     list"""
+    with pytest.raises(ValueError):
+        median([])
+
 def test_median_original_data_unchanged():
     """Test that the median function leaves the original data unchanged"""
     original_data = [3, 7, 4, 2, 5]
@@ -79,8 +85,3 @@ def test_median_original_data_unchanged():
 def test_median_tuples():
     """"Test that the median function works for tuples as well as lists"""
     assert median((3, 1, 2)) == 2, 'Does not work with tuples'
-
-
-def test_median_raises_value_error_on_empty_list():
-    with pytest.raises(ValueError):
-        median([])

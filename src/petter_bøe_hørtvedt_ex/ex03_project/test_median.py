@@ -3,6 +3,7 @@
 __author__ = 'Petter Bøe Hørtvedt'
 __email__ = 'petterho@nmbu.no'
 
+
 import pytest
 
 
@@ -74,6 +75,7 @@ def test_median_raises_value_error_on_empty_list():
      list"""
     with pytest.raises(ValueError):
         median([])
+
 
 def test_median_original_data_unchanged():
     """Test that the median function leaves the original data unchanged"""

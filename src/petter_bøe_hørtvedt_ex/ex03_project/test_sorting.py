@@ -14,7 +14,7 @@ def bubble_sort(unsorted_data):
     Input:
     data: list, tuple
 
-    (Output:
+    Output:
     data: list
     """
     sorted_data = list(unsorted_data)

@@ -78,7 +78,7 @@ def multiple_games(num_games, num_players):
     return num_moves
 
 
-def multi_game_experiment(num_games, num_players, seed):
+def multi_game_experiment(num_games, num_players, seed=None):
     """
     Returns durations of a number of games when playing with given seed.
 

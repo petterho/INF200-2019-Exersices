@@ -27,6 +27,10 @@ def test_walker_move():
 
 
 def test_walker_move_random():
+    """
+    Note: This test might fail due to the randomness, but with a large number
+    of steps it should not.
+    """
     start_position = 0
     home_position = 1
     student = Walker(start_position, home_position)
@@ -38,5 +42,44 @@ def test_walker_move_random():
     assert steps > -(number_of_steps/10)
 
 
+def test_walker_is_at_home():
+    start_position = 0
+    home_position = 0
+    student = Walker(start_position, home_position)
+    assert student.is_at_home() is True
+
+    start_position = 0
+    home_position = 1
+    student = Walker(start_position, home_position)
+    assert student.is_at_home() is False
+
+
+def test_walker_get_position():
+    start_position = 0
+    home_position = 0
+    student = Walker(start_position, home_position)
+    assert student.get_position() == start_position
+
+
+def test_walker_get_steps():
+    start_position = 0
+    home_position = 0
+    student = Walker(start_position, home_position)
+    assert student.get_steps() == 0
+
+
+def test_walker_walk_home():
+    start_position = 0
+    home_position = 0
+    student = Walker(start_position, home_position)
+    steps = student.walk_home()
+    assert student.is_at_home()
+    assert steps == 0
+    assert steps == student.steps
+
+    start_position = 0
+    home_position = 0
+    student = Walker(start_position, home_position)
+    student
 
 

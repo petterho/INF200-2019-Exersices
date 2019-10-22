@@ -14,7 +14,7 @@ class Walker:
         self.steps = 0
 
     def move(self):
-        step = -1 if random.randint(0, 2) == 0 else 1
+        step = -1 if random.random() < 0.5 else 1
         self.position += step
         self.steps += 1
         return step

@@ -4,6 +4,17 @@ __author__ = 'Petter Bøe Hørtvedt'
 __email__ = 'petterho@nmbu.no'
 
 
+class LCGRand:
+    def __init__(self, seed=1):
+        self.a = 7**5
+        self.m = 2**31 - 1
+        self.r_n = seed
+
+    def rand(self):
+        self.r_n = (self.a * self.r_n) % self.m
+        return self.r_n
+
+
 class ListRand:
     def __init__(self, number_list):
         self.list = number_list
@@ -19,7 +30,10 @@ class ListRand:
 
 
 if __name__ == '__main__':
-    listrand_instance = ListRand([1, 2, 3])
-    listrand_instance.rand()
-    listrand_instance.rand()
-    listrand_instance.rand()
+    listrand_instance = ListRand([1, 2, -1])
+    for i in range(3):
+        print(listrand_instance.rand())
+
+    LCGRand_instance = LCGRand(2)
+    for i in range(10):
+        print(LCGRand_instance.rand())

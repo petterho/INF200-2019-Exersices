@@ -78,8 +78,8 @@ def test_walker_walk_home():
     assert steps == student.steps
 
     start_position = 0
-    home_position = 0
-    student = Walker(start_position, home_position)
-    student
-
+    home_position = 10
+    for i in range(10):
+        student = Walker(start_position, home_position)
+        assert student.walk_home() >= home_position
 

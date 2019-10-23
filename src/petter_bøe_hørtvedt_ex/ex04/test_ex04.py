@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 
+__author__ = 'Hans Ekkehard Plesser'
+__email__ = 'hans.ekkehard.plesser@nmbu.no'
+
+
 """
 Acceptance test suite for EX04.
 
 Your code should pass these tests before submission.
 """
 
+
 import pytest
 from src.petter_bøe_hørtvedt_ex.ex04.myrand import LCGRand, ListRand
 from src.petter_bøe_hørtvedt_ex.ex04.walker import Walker
-
-__author__ = 'Hans Ekkehard Plesser'
-__email__ = 'hans.ekkehard.plesser@nmbu.no'
 
 
 def test_lcg():
@@ -33,7 +35,6 @@ def test_list_rng():
 
 def test_walker():
     """Test that Walker class can be used as required."""
-
     start, home = 10, 20
     w = Walker(start, home)
     assert not w.is_at_home()

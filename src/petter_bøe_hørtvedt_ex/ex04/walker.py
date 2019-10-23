@@ -44,6 +44,14 @@ class Walker:
         return self.steps
 
     def walk_home(self):
+        """
+        A method that automatically walks the student home.
+
+        Returns
+        -------
+        self.steps: int
+            Number of steps taken to get home.
+        """
         while not self.is_at_home():
             self.move()
         return self.steps

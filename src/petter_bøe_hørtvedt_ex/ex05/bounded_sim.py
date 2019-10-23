@@ -5,6 +5,7 @@ __email__ = 'petterho@nmbu.no'
 
 
 from . walker_sim import Walker, Simulation
+import random
 
 
 class BoundedWalker:
@@ -23,10 +24,11 @@ class BoundedWalker:
         right_limit : int
             The right boundary  of walker movement
         """
-        self.start = start
-        self.home = home
         self.left_limit = left_limit
         self.right_limit = right_limit
+
+    class Walker(BoundedWalker):
+
 
     
 

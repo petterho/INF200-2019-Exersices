@@ -4,8 +4,11 @@ __author__ = 'Petter Bøe Hørtvedt'
 __email__ = 'petterho@nmbu.no'
 
 
+import time
+
+
 class LCGRand:
-    def __init__(self, seed=1):
+    def __init__(self, seed=time.time()):
         self.a = 7**5
         self.m = 2**31 - 1
         self.r_n = seed

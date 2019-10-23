@@ -24,7 +24,6 @@ class Walker:
         step = -1 if random.random() < 0.5 else 1
         self.position += step
         self.steps += 1
-        return step
 
     def is_at_home(self):
         """Returns True if walker is at home position."""
@@ -56,8 +55,9 @@ class Walker:
             self.move()
         return self.steps
 
+
 class Simulation:
-    def __init__(self, start, home, seed):
+    def __init__(self, start, home, seed=None):
         """
         Initialise the simulation
 
@@ -70,6 +70,12 @@ class Simulation:
         seed : int
             Random generator seed
         """
+        self.start = start
+        self.home = home
+        if seed is None:
+            pass
+        else:
+            random.seed(seed)
 
     def single_walk(self):
         """
@@ -80,8 +86,10 @@ class Simulation:
         int
             The number of steps taken
         """
+        student = Walker(self.start, self.home)
+        return student.walk_home()
 
-    def run_simulation(self, num_walks):
+    def run_simulation(self, num_walks=20):
         """
         Run a set of walks, returns list of number of steps taken.
 
@@ -95,3 +103,26 @@ class Simulation:
         list[int]
             List with the number of steps per walk
         """
+        list_of_steps = []
+        for simulation in range(num_walks):
+            list_of_steps.append(self.single_walk())
+        return list_of_steps
+
+
+if __name__ == '__main__':
+    seed1 = 12345
+    seed2 = 54321
+    for i in range(2):
+        print(f'Simulation from 0 to 10 and seed {seed1}:')
+        sim_inst = Simulation(0, 10, seed1)
+        print(sim_inst.run_simulation(20))
+    print(f'Simulation from 0 to 10 and seed {seed2}:')
+    sim_inst = Simulation(0, 10, seed2)
+    print(sim_inst.run_simulation(20))
+    for i in range(2):
+        print(f'Simulation from 0 to 10 and seed {seed1}:')
+        sim_inst = Simulation(10, 0, seed1)
+        print(sim_inst.run_simulation(20))
+    print(f'Simulation from 0 to 10 and seed {seed2}:')
+    sim_inst = Simulation(10, 0, seed2)
+    print(sim_inst.run_simulation(20))

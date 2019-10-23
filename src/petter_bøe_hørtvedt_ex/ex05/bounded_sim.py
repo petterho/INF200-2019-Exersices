@@ -23,10 +23,16 @@ class BoundedWalker:
         right_limit : int
             The right boundary  of walker movement
         """
+        self.start = start
+        self.home = home
+        self.left_limit = left_limit
+        self.right_limit = right_limit
+
+    
 
 
 class BoundedSimulation:
-    def __init__(self, start, home, seed, left_limit, right_limit):
+    def __init__(self, start, home, left_limit, right_limit, seed=None):
         """
         Initialise the simulation
 
@@ -36,10 +42,18 @@ class BoundedSimulation:
             The walker's initial position
         home : int
             The walk ends when the walker reaches home
-        seed : int
-            Random generator seed
         left_limit : int
             The left boundary of walker movement
         right_limit : int
             The right boundary  of walker movement
+        seed : int
+            Random generator seed
         """
+        self.start = start
+        self.home = home
+        self.left_limit = left_limit
+        self.right_limit = right_limit
+        if seed is None:
+            pass
+        else:
+            random.seed(seed)

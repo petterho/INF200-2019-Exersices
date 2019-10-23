@@ -33,10 +33,11 @@ class ListRand:
 
 
 if __name__ == '__main__':
+    print('ListRand:')
     listrand_instance = ListRand([1, 2, -1])
     for i in range(3):
         print(listrand_instance.rand())
-
-    LCGRand_instance = LCGRand(2)
+    print('LCGRand')
+    LCGRand_instance = LCGRand()
     for i in range(10):
         print(LCGRand_instance.rand())

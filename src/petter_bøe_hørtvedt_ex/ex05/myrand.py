@@ -48,7 +48,8 @@ class LCGRand:
         int
             A random number.
         """
-        pass
+        return RandIter(self, None)
+
 
 class RandIter:
     def __init__(self, random_number_generator, length):
@@ -79,7 +80,10 @@ class RandIter:
         RuntimeError
             If iter is called twice on the same RandIter object.
         """
-        pass
+        if self.num_generated_numbers is not None:
+            raise RuntimeError
+        self.num_generated_numbers = 0
+        return self
 
     def __next__(self):
         """
@@ -87,7 +91,7 @@ class RandIter:
 
         Returns
         -------
-        int
+        random_number : int
             A random number.
 
         Raises
@@ -98,3 +102,23 @@ class RandIter:
             If ``self.length`` random numbers are generated.
         pass
         """
+        if self.num_generated_numbers is None:
+            raise RuntimeError
+        if self.length is not None:
+            if self.num_generated_numbers == self.length:
+                raise StopIteration
+
+        random_number = self.generator.rand()
+        self.num_generated_numbers += 1
+        return random_number
+
+
+if __name__ == '__main__':
+    random_number_generator = LCGRand(1)
+    for rand in random_number_generator.random_sequence(10):
+        print(rand)
+
+    for i, rand in enumerate(random_number_generator.infinite_random_sequence()):
+        print(f'The {i}-th random number is {rand}')
+        if i > 98:
+            break

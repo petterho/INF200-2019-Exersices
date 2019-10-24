@@ -48,7 +48,14 @@ class LCGRand:
         int
             A random number.
         """
+        # This is the way i first did it
         return RandIter(self, None)
+
+        # Also possible to something like
+        # while True:
+        #     self.r_n = (self.a * self.r_n) % self.m
+        #     yield self.r_n
+
 
 
 class RandIter:

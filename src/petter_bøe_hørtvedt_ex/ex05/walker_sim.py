@@ -8,13 +8,13 @@ import random
 
 
 class Walker:
-    def __init__(self, start_position, home_position):
+    def __init__(self, start, home):
         """
-        :param start_position: initial position of the walker
-        :param home_position: position of the walker's home
+        :param start: initial position of the walker
+        :param home: position of the walker's home
         """
-        self.position = start_position
-        self.home_position = home_position
+        self.position = start
+        self.home = home
         self.steps = 0
 
     def move(self):
@@ -27,7 +27,7 @@ class Walker:
 
     def is_at_home(self):
         """Returns True if walker is at home position."""
-        if self.position == self.home_position:
+        if self.position == self.home:
             return True
         else:
             return False

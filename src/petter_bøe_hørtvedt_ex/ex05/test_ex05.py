@@ -84,10 +84,15 @@ def test_bounded_walker():
 
 
 def test_bounded_simulation():
-    """Test that BoundedSimulation class can be used as required."""
+    """Test that BoundedSimulation class can be used as required.
+
+    Changed the test slightly from the original. My BoundedSimulation has
+    seed as last argument and default to None so is is easier to run it without
+    seed preferences.
+    """
 
     start, home, left, right, seed, n_sim = 10, 20, 0, 30, 12345, 5
-    s = BoundedSimulation(start, home, seed, left, right)
+    s = BoundedSimulation(start, home, left, right, seed)
     assert s.single_walk() > 0
     r = s.run_simulation(n_sim)
     assert len(r) == n_sim

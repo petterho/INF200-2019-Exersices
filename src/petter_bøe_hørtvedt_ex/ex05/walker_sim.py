@@ -27,10 +27,7 @@ class Walker:
 
     def is_at_home(self):
         """Returns True if walker is at home position."""
-        if self.position == self.home:
-            return True
-        else:
-            return False
+        return self.position == self.home
 
     def get_position(self):
         """
@@ -110,19 +107,15 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    seed1 = 12345
-    seed2 = 54321
-    for i in range(2):
-        print(f'Simulation from 0 to 10 and seed {seed1}:')
-        sim_inst = Simulation(0, 10, seed1)
-        print(sim_inst.run_simulation(20))
-    print(f'Simulation from 0 to 10 and seed {seed2}:')
-    sim_inst = Simulation(0, 10, seed2)
-    print(sim_inst.run_simulation(20))
-    for i in range(2):
-        print(f'Simulation from 0 to 10 and seed {seed1}:')
-        sim_inst = Simulation(10, 0, seed1)
-        print(sim_inst.run_simulation(20))
-    print(f'Simulation from 0 to 10 and seed {seed2}:')
-    sim_inst = Simulation(10, 0, seed2)
-    print(sim_inst.run_simulation(20))
+    seeds = [12345, 54321]
+    start_home = [(0, 10), (10, 0)]
+    n_sims = 20
+
+    for start, home in start_home:
+        for i in range(2):
+            print(f'Simulation from {start} to {home} and seed {seeds[0]}:')
+            sim_inst = Simulation(start, home, seeds[0])
+            print(sim_inst.run_simulation(n_sims))
+        print(f'Simulation from {start} to {home} and seed {seeds[1]}:')
+        sim_inst = Simulation(start, home, seeds[1])
+        print(sim_inst.run_simulation(n_sims))

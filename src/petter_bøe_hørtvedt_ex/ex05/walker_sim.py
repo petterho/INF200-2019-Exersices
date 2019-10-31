@@ -111,11 +111,13 @@ if __name__ == '__main__':
     start_home = [(0, 10), (10, 0)]
     n_sims = 20
 
-    for start, home in start_home:
+    for start_pos, home_pos in start_home:
         for i in range(2):
-            print(f'Simulation from {start} to {home} and seed {seeds[0]}:')
-            sim_inst = Simulation(start, home, seeds[0])
+            print(f'Simulation from {start_pos} to '
+                  f'{home_pos} and seed {seeds[0]}:')
+            sim_inst = Simulation(start_pos, home_pos, seeds[0])
             print(sim_inst.run_simulation(n_sims))
-        print(f'Simulation from {start} to {home} and seed {seeds[1]}:')
-        sim_inst = Simulation(start, home, seeds[1])
+        print(f'Simulation from {start_pos} to '
+              f'{home_pos} and seed {seeds[1]}:')
+        sim_inst = Simulation(start_pos, home_pos, seeds[1])
         print(sim_inst.run_simulation(n_sims))

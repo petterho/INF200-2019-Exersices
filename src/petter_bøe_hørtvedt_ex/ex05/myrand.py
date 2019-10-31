@@ -45,10 +45,10 @@ class LCGRand:
 
         Yields
         ------
-        int, None
+        int
             A random number.
         """
-        # This is the way i first did it
+        # This is the way I first did it
         return RandIter(self, None)
 
         # Also possible to something like

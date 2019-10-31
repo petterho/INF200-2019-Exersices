@@ -28,6 +28,10 @@ class BoundedWalker(Walker):
         super().__init__(start, home)
 
     def move(self):
+        """
+        Change coordinate by +1 or -1 with equal probability. If the position
+        get out of bounds, then it changes the position to the boundary.
+        """
         Walker.move(self)
         if self.position < self.left_limit:
             self.position = self.left_limit
@@ -78,7 +82,7 @@ if __name__ == '__main__':
     right_boundary = 20
     walks = 20
     for left_boundary in left_boundarys:
-        print(f'Left boundary: {left_boundary:8}')
+        print(f'Left boundary: {left_boundary}')
         sim_ist = BoundedSimulation(start_position, home_position,
                                     left_boundary, right_boundary)
         print(sim_ist.run_simulation(walks))

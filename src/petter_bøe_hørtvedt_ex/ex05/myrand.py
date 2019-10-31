@@ -53,12 +53,11 @@ class LCGRand:
 
         # Also possible to something like
         # while True:
-        #     self.r_n = (self.a * self.r_n) % self.m
-        #     yield self.r_n
+        #    yield self.rand()
 
 
 class RandIter:
-    def __init__(self, random_number_generator, length):
+    def __init__(self, random_number_generator, length=None):
         """
 
         Arguments
@@ -68,6 +67,7 @@ class RandIter:
             takes no arguments and returns a random number.
         length : int
             The number of random numbers to generate
+            Defaults to None and gives an infinite sequence
         """
         self.generator = random_number_generator
         self.length = length
@@ -120,11 +120,13 @@ class RandIter:
 
 
 if __name__ == '__main__':
-    random_number_generator = LCGRand(1)
-    for rand in random_number_generator.random_sequence(10):
+    rand_num_gen = LCGRand(1)
+    print('LCGRand random sequence of length 10:')
+    for rand in rand_num_gen.random_sequence(10):
         print(rand)
 
-    for i, rand in enumerate(random_number_generator.infinite_random_sequence()):
-        print(f'The {i}-th random number is {rand}')
+    print('\nLCGRand infinite random sequence: (breaks after 100 numbers)')
+    for i, rand in enumerate(rand_num_gen.infinite_random_sequence()):
+        print(f'The {i + 1}-th random number is {rand}')
         if i > 98:
             break

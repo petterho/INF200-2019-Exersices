@@ -45,7 +45,7 @@ class LCGRand:
 
         Yields
         ------
-        int
+        int, None
             A random number.
         """
         # This is the way i first did it
@@ -55,7 +55,6 @@ class LCGRand:
         # while True:
         #     self.r_n = (self.a * self.r_n) % self.m
         #     yield self.r_n
-
 
 
 class RandIter:

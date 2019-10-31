@@ -28,10 +28,7 @@ class Walker:
 
     def is_at_home(self):
         """Returns True if walker is at home position."""
-        if self.position == self.home_position:
-            return True
-        else:
-            return False
+        return self.position == self.home_position
 
     def get_position(self):
         """

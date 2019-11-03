@@ -81,7 +81,7 @@ if __name__ == '__main__':
     left_boundaries = [0, -10, -100, -1000, -10000]
     right_boundary = 20
     walks = 20
-    for left_boundary in left_boundarys:
+    for left_boundary in left_boundaries:
         print(f'Left boundary: {left_boundary}')
         sim_ist = BoundedSimulation(start_position, home_position,
                                     left_boundary, right_boundary)

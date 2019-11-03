@@ -78,7 +78,7 @@ class BoundedSimulation(Simulation):
 if __name__ == '__main__':
     start_position = 0
     home_position = 20
-    left_boundarys = [0, -10, -100, -1000, -10000]
+    left_boundaries = [0, -10, -100, -1000, -10000]
     right_boundary = 20
     walks = 20
     for left_boundary in left_boundarys:

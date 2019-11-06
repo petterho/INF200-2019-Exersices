@@ -5,6 +5,9 @@ __email__ = "jonkors@nmbu.no", "petterho@nmbu.no"
 __version__ = "0.0.1"
 
 
+from random import randint
+
+
 class Board:
     """
     Handles the information about the board, including ladders, snakes,
@@ -54,8 +57,16 @@ class Player:
         move() - Moves player and checks with board position
 
     """
-    def __init__(self):
-        pass
+    def __init__(self, board):
+        self.board = board
+        self.position = 0
+
+    def move(self):
+        self.position += randint(1, 6)
+        self.position += self.board.position_adjustment(self.position)
+
+
+
 
 class LazyPlayer(Player):
     """

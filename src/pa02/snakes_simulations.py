@@ -5,6 +5,9 @@ __email__ = "jonkors@nmbu.no", "petterho@nmbu.no"
 __version__ = "0.0.1"
 
 
+from random import randint
+
+
 class Board:
     """
     Handles the information about the board, including ladders, snakes,
@@ -33,14 +36,17 @@ class Board:
         else:
             self.goal = 90
 
-
     def goal_reached(self, position):
         return position >= self.goal
 
-
     def position_adjustment(self, position):
-        if position in self.ladders[:][0] or self.chutes[:][0]:
-            return self.ladder[self.ladder.index(position)]
+        for ladder in self.ladders:
+            if position == ladder[0]:
+                return ladder[1] - ladder[0]
+        for chute in self.chutes:
+            if position == chute[0]:
+                return chute[1] - chute[0]
+        return 0
 
 
 class Player:
@@ -52,7 +58,47 @@ class Player:
         move() - Moves player and checks with board position
 
     """
-    def __init__(self):
+    def __init__(self, board):
+        self.board = board
+        self.position = 0
+
+    def dice_throw(self):
+        return randint(1, 6)
+
+    def climb_or_fall(self):
+        return self.board.position_adjustment(self.position)
+
+    def move(self):
+        """
+        Moves the player according to a dice throw and updates position if it
+        lands on a chute or a ladder, by calling the Board.position_adjustment.
+
+        Returns
+        -------
+        None
+        """
+        self.position += self.dice_throw()
+        self.position += self.climb_or_fall()
+
+
+class ResilientPlayer(Player):
+    """
+    Subclass of player
+    """
+    def __init__(self, board, extra_steps=1):
+        self.extra_steps = extra_steps
+        self.fell_down = False
+        super().__init__(board)
+
+    def move(self):
+        self.position += self.dice_throw()
+        if self.fell_down:
+            self.position += self.extra_steps
+            self.fell_down = False  # Resets the resilient part
+
+        if self.climb_or_fall() < 0:
+            self.fell_down = True  # Has fallen down. Will take extra step(s)
+        self.position += self.climb_or_fall()
 
 
 class LazyPlayer(Player):
@@ -64,30 +110,28 @@ class LazyPlayer(Player):
         super().__init__()
 
 
-class ResilientPlayer(Player):
-    """
-    Subclass of player
-    """
-    def __init__(self):
-        super().__init__()
-
-
 class Simulation:
     """
     Manages simulation of the
     """
 
     def singe_game(self):
+        pass
 
     def run_simulation(self):
+        pass
 
     def get_results(self):
+        pass
 
     def winners_per_type(self):
+        pass
 
     def durations_per_type(self):
+        pass
 
     def players_per_type(self):
+        pass
 
 
 

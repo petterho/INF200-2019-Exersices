@@ -62,6 +62,12 @@ class Player:
         self.board = board
         self.position = 0
 
+    def dice_throw(self):
+        return randint(1, 6)
+
+    def climb_or_fall(self):
+        return self.board.position_adjustment(self.position)
+
     def move(self):
         """
         Moves the player according to a dice throw and updates position if it
@@ -71,8 +77,8 @@ class Player:
         -------
         None
         """
-        self.position += randint(1, 6)
-        self.position += self.board.position_adjustment(self.position)
+        self.position += self.dice_throw()
+        self.position += self.climb_or_fall()
 
 
 class ResilientPlayer(Player):
@@ -81,11 +87,18 @@ class ResilientPlayer(Player):
     """
     def __init__(self, board, extra_steps=1):
         self.extra_steps = extra_steps
+        self.fell_down = False
         super().__init__(board)
 
     def move(self):
-        super().move()
+        self.position += self.dice_throw()
+        if self.fell_down:
+            self.position += self.extra_steps
+            self.fell_down = False  # Resets the resilient part
 
+        if self.climb_or_fall() < 0:
+            self.fell_down = True  # Has fallen down. Will take extra step(s)
+        self.position += self.climb_or_fall()
 
 
 class LazyPlayer(Player):

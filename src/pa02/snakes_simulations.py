@@ -83,11 +83,14 @@ class Player:
 
 class ResilientPlayer(Player):
     """
-    Subclass of player
+    Subclass of Player
+    Will take an extra step next turn if he fell down a chute.
+
+    Overrides super().move
     """
     def __init__(self, board, extra_steps=1):
         self.extra_steps = extra_steps
-        self.fell_down = False
+        self.fell_down = False  # bool-statement, deciding to take extra step
         super().__init__(board)
 
     def move(self):
@@ -106,17 +109,35 @@ class LazyPlayer(Player):
     Subclass of player
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, board, dropped_steps=1):
+        self.climbed_ladder = False
+        self.dropped_steps = dropped_steps
+        super().__init__(board)
+
+    def move(self):
+        dice_throw = self.dice_throw()
+
+        if self.climbed_ladder:
+            result = dice_throw - self.dropped_steps  # The dice throw compared
+            if result > 0:
+                self.position += result
+            self.climbed_ladder = False  # Resets the laziness
+
+        if self.climb_or_fall() > 0:
+            self.climbed_ladder = True  # Climbed ladder, will take less steps
+        self.position += self.climb_or_fall()
 
 
 class Simulation:
     """
-    Manages simulation of the
+    Manages simulation of the boards and players
     """
+    def __init__(self, player_field, board=None, seed=None,
+                 randomize_players=True):
+        
 
-    def singe_game(self):
-        pass
+    def single_game(self):
+
 
     def run_simulation(self):
         pass

@@ -48,6 +48,7 @@ class Board:
                 return chute[1] - chute[0]
         return 0
 
+
 class Player:
     """
     __init___
@@ -62,9 +63,28 @@ class Player:
         self.position = 0
 
     def move(self):
+        """
+        Moves the player according to a dice throw and updates position if it
+        lands on a chute or a ladder, by calling the Board.position_adjustment.
+
+        Returns
+        -------
+        None
+        """
         self.position += randint(1, 6)
         self.position += self.board.position_adjustment(self.position)
 
+
+class ResilientPlayer(Player):
+    """
+    Subclass of player
+    """
+    def __init__(self, board, extra_steps=1):
+        self.extra_steps = extra_steps
+        super().__init__(board)
+
+    def move(self):
+        super().move()
 
 
 
@@ -73,14 +93,6 @@ class LazyPlayer(Player):
     Subclass of player
     """
 
-    def __init__(self):
-        super().__init__()
-
-
-class ResilientPlayer(Player):
-    """
-    Subclass of player
-    """
     def __init__(self):
         super().__init__()
 

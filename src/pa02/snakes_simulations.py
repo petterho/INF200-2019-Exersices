@@ -33,15 +33,17 @@ class Board:
         else:
             self.goal = 90
 
-
     def goal_reached(self, position):
         return position >= self.goal
 
-
     def position_adjustment(self, position):
-        if position in self.ladders[:][0] or self.chutes[:][0]:
-            return self.ladder[self.ladder.index(position)]
-
+        for ladder in self.ladders:
+            if position == ladder[0]:
+                return ladder[1] - ladder[0]
+        for chute in self.chutes:
+            if position == chute[0]:
+                return chute[1] - chute[0]
+        return 0
 
 class Player:
     """
@@ -53,7 +55,7 @@ class Player:
 
     """
     def __init__(self):
-
+        pass
 
 class LazyPlayer(Player):
     """
@@ -78,16 +80,22 @@ class Simulation:
     """
 
     def singe_game(self):
+        pass
 
     def run_simulation(self):
+        pass
 
     def get_results(self):
+        pass
 
     def winners_per_type(self):
+        pass
 
     def durations_per_type(self):
+        pass
 
     def players_per_type(self):
+        pass
 
 
 

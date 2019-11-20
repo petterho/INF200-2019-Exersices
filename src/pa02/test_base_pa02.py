@@ -11,6 +11,7 @@ __email__ = 'hans.ekkehard.plesser@nmbu.no'
 import src.pa02.snakes_simulations as cs
 import pytest
 
+
 class TestBoard:
     """
     Tests for Board class.
@@ -160,3 +161,37 @@ class TestSimulation:
                    for k in w.keys())
         assert all(len(v) >= 0 for v in w.values())
         assert all(n >= 0 for v in w.values() for n in v)
+
+
+class TestOwnTests:
+    def test_player_move(self):
+        board = cs.Board()
+        p = cs.Player(board)
+        p.move()
+        assert p.position != 0
+
+    def test_resilient_player_move(self):
+        board = cs.Board()
+        rp = cs.ResilientPlayer(board)
+        rp.move()
+        assert rp.position != 0
+
+    def test_lazy_player_move(self):
+        board = cs.Board()
+        lp = cs.LazyPlayer(board)
+        lp.move()
+        assert lp.position != 0
+
+    def test_resilient_player_wins_more(self):
+        """
+        After a run with a million games with standard board and two of each
+        type of player:
+        {'LazyPlayer': 295179, 'Player': 344518, 'ResilientPlayer': 360303}
+        """
+        sim = cs.Simulation([cs.Player, cs.Player, cs.ResilientPlayer,
+                             cs.ResilientPlayer, cs.LazyPlayer, cs.LazyPlayer])
+        sim.run_simulation(10**4)
+        dict_wins = sim.winners_per_type()
+        print(dict_wins)
+        assert dict_wins['ResilientPlayer'] > dict_wins['Player']
+        assert dict_wins['LazyPlayer'] < dict_wins['Player']

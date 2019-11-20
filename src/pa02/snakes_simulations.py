@@ -158,33 +158,36 @@ class Simulation:
                  randomize_players=True):
         self.board = board
         random_seed(seed)
-        self.players = player_field
+        self.player_field = player_field
         self.randomize = randomize_players
         if board is None:
             self.board = Board()
         else:
             self.board = board
+        self.results = []
 
     def single_game(self):
         num_of_turns = 0
         if self.randomize:
-            shuffle(self.players)
+            shuffle(self.player_field)
 
-        for ind, player in enumerate(self.players):
-            self.players[ind] = player()
+        players = []
+        for player in self.player_field:
+            players.append(player(self.board))
 
         while True:
             num_of_turns += 1
-            for player in self.players:
+            for player in players:
                 player.move()
                 if self.board.goal_reached(player.position):
-                    return tuple(num_of_turns, type(player).__name__)
+                    return num_of_turns, type(player).__name__
 
-    def run_simulation(self):
-        pass
+    def run_simulation(self, number_of_simulations=10):
+        for _ in range(number_of_simulations):
+            self.results.append(self.single_game())
 
     def get_results(self):
-        pass
+        return self.results
 
     def winners_per_type(self):
         pass
@@ -196,4 +199,7 @@ class Simulation:
         pass
 
 
-
+if __name__ == '__main__':
+    sim = Simulation([Player, ResilientPlayer, LazyPlayer])
+    sim.run_simulation()
+    sim.get_results()

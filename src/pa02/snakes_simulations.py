@@ -244,7 +244,7 @@ if __name__ == '__main__':
     # sim = Simulation([LazyPlayer])
     # print(sim.single_game())
     board_ = Board()
-    LP = LazyPlayer(board)
+    LP = LazyPlayer(board_)
     print(LP.position)
     LP.move()
     print(LP.position)

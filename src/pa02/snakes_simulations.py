@@ -124,6 +124,11 @@ class ResilientPlayer(Player):
         super().__init__(board)
 
     def move(self):
+        """
+        Changes the position.
+        When the statement "fell_down" is True the player will move a
+        predetermined number of steps extra
+        """
         self.position += self.dice_throw()
         if self.fell_down:
             self.position += self.extra_steps
@@ -138,13 +143,17 @@ class LazyPlayer(Player):
     """
     Subclass of player
     """
-
     def __init__(self, board, dropped_steps=1):
         self.climbed_ladder = False
         self.dropped_steps = dropped_steps
         super().__init__(board)
 
     def move(self):
+        """
+        Changes the position.
+        When the statement "climbed_ladder" is True the player will drop a
+        predetermined number of steps
+        """
         dice_throw = self.dice_throw()
 
         if self.climbed_ladder:

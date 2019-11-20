@@ -37,9 +37,30 @@ class Board:
             self.goal = 90
 
     def goal_reached(self, position):
+        """Checks if position is equal or greater than the goal
+
+        Arguments
+        ---------
+        position : int
+
+        Returns
+        -------
+        bool
+        """
         return position >= self.goal
 
     def position_adjustment(self, position):
+        """Adjust a players position if it lands on a ladder or a chute.
+
+        Arguments
+        ---------
+        position: int
+
+        Returns
+        -------
+        numbers of steps the player is to
+        walk because of ladders or chutes: int
+        """
         for ladder in self.ladders:
             if position == ladder[0]:
                 return ladder[1] - ladder[0]

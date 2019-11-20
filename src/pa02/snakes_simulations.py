@@ -166,6 +166,15 @@ class Simulation:
     """
     def __init__(self, player_field, board=None, seed=None,
                  randomize_players=True):
+        """
+
+        Parameters
+        ----------
+        player_field: list
+        board: Board
+        seed: int
+        randomize_players: bool
+        """
         self.board = board
         random_seed(seed)
         self.player_field = player_field
@@ -177,6 +186,14 @@ class Simulation:
         self.results = []
 
     def single_game(self):
+        """
+        Plays a single round of snakes and chutes with the
+
+        Returns
+        -------
+        num_of_turns: int
+        player_type: str
+        """
         num_of_turns = 0
         if self.randomize:
             shuffle(self.player_field)
@@ -193,13 +210,35 @@ class Simulation:
                     return num_of_turns, type(player).__name__
 
     def run_simulation(self, number_of_simulations=10):
+        """
+        Runs the wanted number of simulations.
+
+        Parameters
+        ----------
+        number_of_simulations: int
+        """
         for _ in range(number_of_simulations):
             self.results.append(self.single_game())
 
     def get_results(self):
+        """
+        Returns the results from run_simulation.
+
+        Returns
+        -------
+        self.results: list
+        """
         return self.results
 
     def winners_per_type(self):
+        """
+        Returns a dict with player type as key and the number of wins for that
+        type as value
+
+        Returns
+        -------
+        dict_win_per_type: dict
+        """
         dict_win_per_type = {}
 
         for result in self.results:
@@ -213,6 +252,14 @@ class Simulation:
         return dict_win_per_type
 
     def durations_per_type(self):
+        """
+        Returns a dict with player type as key and the number of turns for
+        each win as a list as value
+
+        Returns
+        -------
+        dict_duration_per_type: dict
+        """
         dict_duration_per_type = {}
 
         for result in self.results:
@@ -227,6 +274,14 @@ class Simulation:
         return dict_duration_per_type
 
     def players_per_type(self):
+        """
+        Returns a dict with player type as key and the number players of that
+        type at the board.
+
+        Returns
+        -------
+        dict_players_per_type: dict
+        """
         dict_players_per_type = {}
 
         for player in self.player_field:
@@ -241,11 +296,4 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    # sim = Simulation([LazyPlayer])
-    # print(sim.single_game())
-    board_ = Board()
-    LP = LazyPlayer(board_)
-    print(LP.position)
-    LP.move()
-    print(LP.position)
-
+    pass

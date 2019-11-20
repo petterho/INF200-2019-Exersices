@@ -5,7 +5,8 @@ __email__ = "jonkors@nmbu.no", "petterho@nmbu.no"
 __version__ = "0.0.1"
 
 
-from random import randint
+from random import randint, shuffle
+from random import seed as random_seed
 
 
 class Board:
@@ -155,10 +156,29 @@ class Simulation:
     """
     def __init__(self, player_field, board=None, seed=None,
                  randomize_players=True):
-        
+        self.board = board
+        random_seed(seed)
+        self.players = player_field
+        self.randomize = randomize_players
+        if board is None:
+            self.board = Board()
+        else:
+            self.board = board
 
     def single_game(self):
+        num_of_turns = 0
+        if self.randomize:
+            shuffle(self.players)
 
+        for ind, player in enumerate(self.players):
+            self.players[ind] = player()
+
+        while True:
+            num_of_turns += 1
+            for player in self.players:
+                player.move()
+                if self.board.goal_reached(player.position):
+                    return tuple(num_of_turns, type(player).__name__)
 
     def run_simulation(self):
         pass

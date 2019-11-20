@@ -190,16 +190,49 @@ class Simulation:
         return self.results
 
     def winners_per_type(self):
-        pass
+        dict_win_per_type = {}
+
+        for result in self.results:
+            player_type = str(result[1])
+
+            if player_type not in dict_win_per_type.keys():
+                dict_win_per_type[player_type] = 1
+            else:
+                dict_win_per_type[player_type] += 1
+
+        return dict_win_per_type
 
     def durations_per_type(self):
-        pass
+        dict_duration_per_type = {}
+
+        for result in self.results:
+            player_type = str(result[1])
+            duration = int(result[0])
+
+            if player_type not in dict_duration_per_type.keys():
+                dict_duration_per_type[player_type] = [duration]
+            else:
+                dict_duration_per_type[player_type].append(duration)
+
+        return dict_duration_per_type
 
     def players_per_type(self):
-        pass
+        dict_players_per_type = {}
+
+        for player in self.player_field:
+            player_type = str(player.__name__)
+
+            if player_type not in dict_players_per_type.keys():
+                dict_players_per_type[player_type] = 1
+            else:
+                dict_players_per_type[player_type] += 1
+
+        return dict_players_per_type
 
 
 if __name__ == '__main__':
     sim = Simulation([Player, ResilientPlayer, LazyPlayer])
     sim.run_simulation()
     sim.get_results()
+    print(sim.players_per_type())
+

@@ -248,3 +248,4 @@ if __name__ == '__main__':
     print(LP.position)
     LP.move()
     print(LP.position)
+

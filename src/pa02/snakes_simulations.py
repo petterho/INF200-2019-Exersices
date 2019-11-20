@@ -14,7 +14,8 @@ class Board:
     Handles the information about the board, including ladders, snakes,
     goal.
 
-    Methods:
+    Methods
+    -------
         constructor
 
         goal_reached
@@ -76,9 +77,16 @@ class Player:
     __init___
     input - instance of Board
 
-    Methods:
-        move() - Moves player and checks with board position
+    Methods
+    -------
+        dice_throw
+            Returns a dice throw
 
+        climb_or_fall
+            Returns the move based on the snakes and ladders
+
+        move
+            Moves player and checks with board position
     """
     def __init__(self, board):
         self.board = board
@@ -144,6 +152,8 @@ class LazyPlayer(Player):
             if result > 0:
                 self.position += result
             self.climbed_ladder = False  # Resets the laziness
+        else:
+            self.position += dice_throw
 
         if self.climb_or_fall() > 0:
             self.climbed_ladder = True  # Climbed ladder, will take less steps
@@ -231,8 +241,10 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    sim = Simulation([Player, ResilientPlayer, LazyPlayer])
-    sim.run_simulation()
-    sim.get_results()
-    print(sim.players_per_type())
-
+    # sim = Simulation([LazyPlayer])
+    # print(sim.single_game())
+    board_ = Board()
+    LP = LazyPlayer(board)
+    print(LP.position)
+    LP.move()
+    print(LP.position)

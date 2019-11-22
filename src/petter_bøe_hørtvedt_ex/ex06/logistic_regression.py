@@ -191,10 +191,15 @@ def sigmoid(z):
     sigmoidal_transformed_z : np.ndarray
         Transformed input.
     """
-    for index, value in enumerate(z):
-        z[index] = 1/(1 + exp(-value))
-    return z
-
+    if type(z) is int or type(z) is float:
+        return 1 / (1 + exp(-z))
+    if type(z) is np.ndarray:
+        x = np.zeros_like(z, np.float64)
+        for index, value in enumerate(z):
+            x[index] = 1 / (1 + exp(-value))
+        return x
+    else:
+        raise ValueError
 
 
 def predict_proba(coef, X):
@@ -226,8 +231,7 @@ def predict_proba(coef, X):
     p : np.ndarray(shape(n,))
         The predicted class probabilities.
     """
-    # Your code here
-    raise NotImplementedError
+    return sigmoid(X@coef)
 
 
 def logistic_gradient(coef, X, y):
@@ -482,6 +486,9 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
 
 
 if __name__ == "__main__":
+    a = np.array([1, 2, 3, 4])
+    print(sigmoid(a))
+    string = """
     # Simulate a random dataset
     X = np.random.standard_normal((100, 5))
     coef = np.random.standard_normal(5)
@@ -495,3 +502,4 @@ if __name__ == "__main__":
     print(f"Accuracy: {lr_model.score(X, y)}")
     print(f"True coefficients: {coef}")
     print(f"Learned coefficients: {lr_model.coef_}")
+    """

@@ -329,8 +329,10 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         random_state : np.random.random_state or int or None (default=None)
             A numpy random state object or a seed for a numpy random state object.
         """
-        # Your code here
-        raise NotImplementedError
+        self.max_iter = max_iter
+        self.tol = tol
+        self.learning_rate = learning_rate
+        self.random_state = random_state
 
     def _has_converged(self, coef, X, y):
         r"""Whether the gradient descent algorithm has converged.
@@ -361,8 +363,7 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         has_converged : bool
             True if the convergence criteria above is met, False otherwise.
         """
-        # Your code here
-        raise NotImplementedError
+        return norm(logistic_gradient(coef, X, y)) < self.tol
 
     def _fit_gradient_descent(self, coef, X, y):
         r"""Fit the logisitc regression model to the data given initial weights
@@ -399,8 +400,14 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         coef : np.ndarray(shape=(n,))
             The logistic regression weights
         """
-        # Your code here
-        raise NotImplementedError
+        iterations = 0
+        while (self._has_converged(coef, X, y) is not True
+               and iterations <= self.max_iter):
+            coef = coef - self.learning_rate*logistic_gradient(coef, X, y)
+            iterations += 1
+        return coef
+
+
 
     def fit(self, X, y):
         """Fit a logistic regression model to the data.
@@ -487,9 +494,6 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
 
 
 if __name__ == "__main__":
-    a = np.array([1, 2, 3, 4])
-    print(sigmoid(a))
-    string = """
     # Simulate a random dataset
     X = np.random.standard_normal((100, 5))
     coef = np.random.standard_normal(5)
@@ -498,9 +502,10 @@ if __name__ == "__main__":
     # Fit a logistic regression model to the X and y vector
     # Fill in your code here.
     # Create a logistic regression object and fit it to the dataset
+    lr_model = LogisticRegression()
+    lr_model.fit(X, y)
 
     # Print performance information
     print(f"Accuracy: {lr_model.score(X, y)}")
     print(f"True coefficients: {coef}")
     print(f"Learned coefficients: {lr_model.coef_}")
-    """

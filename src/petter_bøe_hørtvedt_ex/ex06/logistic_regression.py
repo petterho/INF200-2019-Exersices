@@ -269,8 +269,9 @@ def logistic_gradient(coef, X, y):
         The gradient of the cross entropy loss related to the linear
         logistic regression model.
     """
-    # Your code here
-    raise NotImplementedError
+    p = predict_proba(coef, X)
+    return X.T@(y - p)
+
 
 
 class LogisticRegression(BaseEstimator, ClassifierMixin):
@@ -420,7 +421,7 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
 
         # A random state is a random number generator, akin to those
         # you made in earlier coursework. It has all functions of
-        # np.ranom, but its sequence of random numbers is not affected
+        # np.random, but its sequence of random numbers is not affected
         # by calls to np.random.
         random_state = check_random_state(self.random_state)
         coef = random_state.standard_normal(X.shape[1])

@@ -10,7 +10,7 @@ from unittest import mock
 import numpy as np
 import pytest
 
-from . import logistic_regression as lr
+from src.petter_bøe_hørtvedt_ex.ex06 import logistic_regression as lr
 
 
 # The fixtures are called whenever their name is used as input to a test
@@ -116,3 +116,4 @@ class TestLogisticRegression:
         p = lr.predict_proba(coef, X)
         assert lr_model._has_converged(coef, X, p)
         assert not lr_model._has_converged(np.array([1, 1000]), X, p)
+

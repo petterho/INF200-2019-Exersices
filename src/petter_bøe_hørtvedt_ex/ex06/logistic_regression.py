@@ -191,9 +191,10 @@ def sigmoid(z):
     sigmoidal_transformed_z : np.ndarray
         Transformed input.
     """
-    if type(z) is int or type(z) is float:
+    type_z = type(z)
+    if type_z is int or type_z is float:
         return 1 / (1 + exp(-z))
-    if type(z) is np.ndarray:
+    if type_z is np.ndarray:
         x = np.zeros_like(z, np.float64)
         for index, value in enumerate(z):
             x[index] = 1 / (1 + exp(-value))
@@ -271,7 +272,6 @@ def logistic_gradient(coef, X, y):
     """
     p = predict_proba(coef, X)
     return X.T@(y - p)
-
 
 
 class LogisticRegression(BaseEstimator, ClassifierMixin):
@@ -403,10 +403,11 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         iterations = 0
         while (self._has_converged(coef, X, y) is not True
                and iterations <= self.max_iter):
-            coef = coef + self.learning_rate*logistic_gradient(coef, X, y) # There should be a minus here
+            coef += self.learning_rate*logistic_gradient(coef, X, y) # There should be a minus here
             iterations += 1
         if iterations >= self.max_iter:
-            raise RuntimeError('Reached max iterations.')
+            pass
+            # raise RuntimeError('Reached max iterations.')
         return coef
 
 

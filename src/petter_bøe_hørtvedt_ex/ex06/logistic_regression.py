@@ -191,16 +191,19 @@ def sigmoid(z):
     sigmoidal_transformed_z : np.ndarray
         Transformed input.
     """
-    type_z = type(z)
-    if type_z is int or type_z is float:
-        return 1 / (1 + exp(-z))
-    elif type_z is np.ndarray:
-        x = np.zeros_like(z, np.float64)
-        for index, value in enumerate(z):
-            x[index] = 1 / (1 + exp(-value))
-        return x
-    else:
-        raise ValueError('Only np.ndarrays, int and floats are allowed.')
+    return 1 / (1 + exp(-z))
+
+    # This was the long sigmoid that I used while developing the code.
+    # type_z = type(z)
+    # if type_z is int or type_z is float:
+    #     return 1 / (1 + exp(-z))
+    # elif type_z is np.ndarray:
+    #     x = np.zeros_like(z, np.float64)
+    #     for index, value in enumerate(z):
+    #        x[index] = 1 / (1 + exp(-value))
+    #     return x
+    # else:
+    #     raise ValueError('Only np.ndarrays, int and floats are allowed.')
 
 
 def predict_proba(coef, X):
